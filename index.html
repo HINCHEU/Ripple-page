@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ripple - High Quality Media Downloader</title>
+    <meta name="description" content="Ripple is the ultimate app for seamless media management and downloading. Fast, beautiful, and secure.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00F0FF;
+            --secondary: #0057FF;
+            --accent: #B026FF;
+            --bg-dark: #07070A;
+            --text-light: #F0F4F8;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Animated Background Gradients */
+        .bg-glow {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(140px);
+            z-index: -1;
+            animation: float 25s infinite ease-in-out alternate;
+            opacity: 0.6;
+        }
+        .glow-1 {
+            width: 600px;
+            height: 600px;
+            background: rgba(0, 87, 255, 0.25);
+            top: -150px;
+            left: -150px;
+        }
+        .glow-2 {
+            width: 500px;
+            height: 500px;
+            background: rgba(176, 38, 255, 0.2);
+            bottom: -50px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+        .glow-3 {
+            width: 400px;
+            height: 400px;
+            background: rgba(0, 240, 255, 0.15);
+            top: 40%;
+            left: 30%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(50px, -80px) scale(1.1); }
+            100% { transform: translate(-30px, 60px) scale(0.95); }
+        }
+
+        /* Navigation */
+        nav {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .logo svg {
+            width: 36px;
+            height: 36px;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 1rem 8rem;
+            min-height: 80vh;
+            position: relative;
+            z-index: 10;
+        }
+
+        .badge {
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-weight: 800;
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #A0AAB2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradient-shift 5s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #A0AAB2;
+            max-width: 650px;
+            margin-bottom: 3.5rem;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .btn-download {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            text-decoration: none;
+            padding: 1.2rem 3rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 15px 35px rgba(0, 87, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-download::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            transition: opacity 0.4s ease;
+            opacity: 0;
+            z-index: -1;
+        }
+
+        .btn-download:hover::before {
+            opacity: 1;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(0, 240, 255, 0.5);
+        }
+
+        .system-req {
+            margin-top: 1.5rem;
+            color: #606A75;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        /* App Preview Mockup */
+        .app-preview-container {
+            max-width: 1100px;
+            margin: -5rem auto 8rem;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 20;
+            perspective: 1000px;
+        }
+
+        .app-preview {
+            border-radius: 20px;
+            box-shadow: 0 30px 100px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05) inset;
+            border: 1px solid var(--card-border);
+            overflow: hidden;
+            background: #0A0A12;
+            display: flex;
+            aspect-ratio: 16/9;
+            transform: rotateX(5deg) scale(0.98);
+            transition: transform 0.5s ease;
+            backdrop-filter: blur(20px);
+        }
+
+        .app-preview:hover {
+            transform: rotateX(0deg) scale(1);
+        }
+        
+        .mockup-header {
+            position: absolute;
+            top: 0; width: 100%; height: 45px;
+            background: rgba(255,255,255,0.02);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex; align-items: center; padding: 0 1.5rem;
+            gap: 8px;
+            z-index: 2;
+        }
+        .mockup-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot-r { background: #FF5F56; }
+        .dot-y { background: #FFBD2E; }
+        .dot-g { background: #27C93F; }
+
+        .mockup-body {
+            margin-top: 45px;
+            width: 100%;
+            height: calc(100% - 45px);
+            display: flex;
+            background: radial-gradient(ellipse at top right, rgba(0,240,255,0.1), transparent 50%),
+                        radial-gradient(ellipse at bottom left, rgba(176,38,255,0.1), transparent 50%);
+        }
+
+        .mockup-sidebar {
+            width: 250px;
+            border-right: 1px solid rgba(255,255,255,0.05);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .skeleton-line {
+            height: 12px;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .mockup-main {
+            flex: 1;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .mockup-card {
+            width: 100%;
+            height: 120px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            padding: 2rem;
+            gap: 2rem;
+        }
+
+        .pulse-circle {
+            width: 60px; height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.4); }
+            70% { box-shadow: 0 0 0 25px rgba(0, 240, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 2rem 5% 8rem;
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .section-header p {
+            color: #A0AAB2;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 3rem 2.5rem;
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at top right, rgba(0,240,255,0.1), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 240, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(0,240,255,0.1), rgba(0,87,255,0.1));
+            border: 1px solid rgba(0,240,255,0.2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .feature-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #A0AAB2;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 5%;
+            border-top: 1px solid var(--card-border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            position: relative;
+            z-index: 10;
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .footer-logo svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .footer-text {
+            color: #606A75;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 5rem 1rem; min-height: 60vh; }
+            .hero h1 { font-size: 3rem; }
+            .features { padding: 2rem 1.5rem 5rem; }
+            .app-preview { transform: none; }
+            .app-preview-container { margin: -2rem auto 5rem; }
+            .mockup-sidebar { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#00F0FF" />
+        <stop offset="100%" stop-color="#0057FF" />
+      </linearGradient>
+      <linearGradient id="gradient-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#0057FF" />
+        <stop offset="100%" stop-color="#B026FF" />
+      </linearGradient>
+    </svg>
+
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+    <div class="bg-glow glow-3"></div>
+
+    <nav>
+        <div class="logo" id="header-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="url(#gradient)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="6" />
+                <circle cx="12" cy="12" r="2" />
+            </svg>
+            Ripple
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero" id="hero">
+            <div class="badge">Version 2.0 Now Available</div>
+            <h1>Make Waves With<br><span>Your Media.</span></h1>
+            <p>Ripple is the definitive application for downloading and managing high-quality content. Experience blazing fast speeds wrapped in a sleek, immersive interface.</p>
+            
+            <a href="dist/Ripple-Setup.exe" class="btn-download" download id="download-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download for Windows
+            </a>
+            <div class="system-req">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+                Windows 10 / 11 (64-bit) &bull; Free
+            </div>
+        </section>
+
+        <section class="app-preview-container" id="preview">
+            <div class="app-preview">
+                <div class="mockup-header">
+                    <div class="mockup-dot dot-r"></div>
+                    <div class="mockup-dot dot-y"></div>
+                    <div class="mockup-dot dot-g"></div>
+                </div>
+                <div class="mockup-body">
+                    <div class="mockup-sidebar">
+                        <div class="skeleton-line" style="width: 80%; margin-bottom: 2rem;"></div>
+                        <div class="skeleton-line" style="width: 60%;"></div>
+                        <div class="skeleton-line" style="width: 70%;"></div>
+                        <div class="skeleton-line" style="width: 50%;"></div>
+                        <div class="skeleton-line" style="width: 65%; margin-top: 2rem;"></div>
+                    </div>
+                    <div class="mockup-main">
+                        <div class="skeleton-line" style="width: 30%; height: 24px; margin-bottom: 1rem;"></div>
+                        <div class="mockup-card">
+                            <div class="pulse-circle"></div>
+                            <div style="flex: 1; display: flex; flex-direction: column; gap: 12px;">
+                                <div class="skeleton-line" style="width: 40%; height: 16px;"></div>
+                                <div class="skeleton-line" style="width: 100%; height: 8px; background: rgba(0,240,255,0.2);">
+                                    <div style="width: 65%; height: 100%; background: var(--primary); border-radius: 4px;"></div>
+                                </div>
+                                <div class="skeleton-line" style="width: 20%; height: 12px;"></div>
+                            </div>
+                        </div>
+                        <div class="mockup-card" style="opacity: 0.5;">
+                            <div class="pulse-circle" style="animation: none; background: rgba(255,255,255,0.05);"></div>
+                            <div style="flex: 1; display: flex; flex-direction: column; gap: 12px;">
+                                <div class="skeleton-line" style="width: 35%; height: 16px;"></div>
+                                <div class="skeleton-line" style="width: 15%; height: 12px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <div class="section-header">
+                <h2>Why choose Ripple?</h2>
+                <p>Designed from the ground up to provide the best media downloading experience on the market.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Advanced segment downloading technology ensures your media downloads at the maximum possible speed your network allows.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                    </div>
+                    <h3>Stunning Design</h3>
+                    <p>A beautiful, modern interface featuring smooth animations and dark mode support that feels right at home on Windows 11.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
+                    <h3>Private & Secure</h3>
+                    <p>Everything operates locally on your machine. We don't track your downloads, collect telemetry, or show intrusive ads.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Smart Parsing</h3>
+                    <p>Simply paste a link and Ripple automatically extracts the highest quality video and audio streams available for download.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                    <h3>100% Free</h3>
+                    <p>No premium tiers, no hidden fees, and no artificial limitations. You get the full uncompromised experience for free.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Queue Management</h3>
+                    <p>Queue up dozens of downloads and let Ripple handle them in the background while you focus on other tasks.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="url(#gradient)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="6" />
+                <circle cx="12" cy="12" r="2" />
+            </svg>
+            Ripple
+        </div>
+        <div class="footer-text">
+            &copy; 2026 Ripple Application. Built for smooth downloading.<br>
+            Not affiliated with any streaming platforms.
+        </div>
+    </footer>
+</body>
+</html>
