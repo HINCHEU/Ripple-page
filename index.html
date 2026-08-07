@@ -412,6 +412,128 @@
             font-size: 1.05rem;
         }
 
+        /* Pricing */
+        .pricing {
+            padding: 2rem 5% 8rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 3rem 2.5rem;
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .pricing-card.pro {
+            background: linear-gradient(180deg, rgba(176,38,255,0.05) 0%, rgba(0,87,255,0.05) 100%);
+            border-color: rgba(176,38,255,0.3);
+        }
+        
+        .pricing-card.pro::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            letter-spacing: 1px;
+        }
+
+        .pricing-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+        
+        .pricing-price span {
+            font-size: 1.2rem;
+            color: #A0AAB2;
+            font-weight: 400;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+            flex: 1;
+        }
+        
+        .pricing-features li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #A0AAB2;
+        }
+        
+        .pricing-features li svg {
+            width: 20px;
+            height: 20px;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+        
+        .pricing-card.pro .pricing-features li svg {
+            color: var(--accent);
+        }
+
+        .btn-pricing {
+            display: block;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-pricing.free {
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+        }
+        
+        .btn-pricing.free:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .btn-pricing.pro {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(176,38,255,0.3);
+        }
+        
+        .btn-pricing.pro:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(176,38,255,0.5);
+        }
+
         /* Footer */
         footer {
             padding: 3rem 5%;
@@ -573,8 +695,8 @@
                             <line x1="12" y1="17" x2="12" y2="21"></line>
                         </svg>
                     </div>
-                    <h3>Stunning Design</h3>
-                    <p>A beautiful, modern interface featuring smooth animations and dark mode support that feels right at home on Windows 11.</p>
+                    <h3>Unified Clean Design</h3>
+                    <p>Enjoy a unified, premium interface across all tiers. A single streamlined dashboard makes media downloading effortless and beautiful.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -601,8 +723,8 @@
                             <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                         </svg>
                     </div>
-                    <h3>100% Free</h3>
-                    <p>No premium tiers, no hidden fees, and no artificial limitations. You get the full uncompromised experience for free.</p>
+                    <h3>Pro Power Unleashed</h3>
+                    <p>Upgrade to Pro for a one-time $10 purchase to unlock 1080p & 4K quality downloads, playlist grabbing, and much more.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -616,6 +738,40 @@
                     </div>
                     <h3>Queue Management</h3>
                     <p>Queue up dozens of downloads and let Ripple handle them in the background while you focus on other tasks.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing" id="pricing">
+            <div class="section-header">
+                <h2>Simple, transparent pricing</h2>
+                <p>Choose the tier that fits your needs. No subscriptions, just a one-time purchase.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-title">Free</div>
+                    <div class="pricing-price">$0 <span>forever</span></div>
+                    <ul class="pricing-features">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Unified Premium Interface</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Lightning Fast Speeds</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 720p Video Quality</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> MP3 Audio Extraction</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Active Queue Management</li>
+                    </ul>
+                    <a href="#download-btn" class="btn-pricing free">Get Started</a>
+                </div>
+                <div class="pricing-card pro">
+                    <div class="pricing-title">Pro</div>
+                    <div class="pricing-price">$10 <span>one-time</span></div>
+                    <ul class="pricing-features">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Everything in Free</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 1080p & 4K (2160p) Videos</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Full Playlist Grabbing</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Auto-Remove Sponsors</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Embed Rich Metadata</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Priority Support</li>
+                    </ul>
+                    <a href="https://t.me/hincheu" target="_blank" class="btn-pricing pro">Purchase License</a>
                 </div>
             </div>
         </section>
