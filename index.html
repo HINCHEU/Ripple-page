@@ -423,8 +423,8 @@
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
             margin-top: 3rem;
         }
 
@@ -447,7 +447,7 @@
         }
         
         .pricing-card.pro::before {
-            content: 'MOST POPULAR';
+            content: 'BEST VALUE';
             position: absolute;
             top: 15px;
             right: -35px;
@@ -572,6 +572,9 @@
             color: #fff !important;
         }
 
+        @media (max-width: 900px) {
+            .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+        }
         @media (max-width: 768px) {
             .hero { padding: 5rem 1rem; min-height: 60vh; }
             .hero h1 { font-size: 3rem; }
