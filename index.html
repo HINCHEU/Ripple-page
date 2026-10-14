@@ -1078,7 +1078,7 @@
             <a href="#features" class="nav-link">Features</a>
             <a href="#tutorial" class="nav-link">How to Use</a>
             <a href="#pricing" class="nav-link">Pricing</a>
-            <a href="https://github.com/HINCHEU/Ripple-page/releases/download/main/Ripple-Setup.exe" class="nav-cta"
+            <a href="https://github.com/HINCHEU/Ripple-page/releases/latest/download/Ripple-Setup.exe" class="nav-cta"
                 id="nav-download-btn">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -1114,7 +1114,7 @@
                 blazing fast speeds wrapped in a sleek, immersive interface.</p>
 
             <div class="hero-actions">
-                <a href="https://github.com/HINCHEU/Ripple-page/releases/download/main/Ripple-Setup.exe"
+                <a href="https://github.com/HINCHEU/Ripple-page/releases/latest/download/Ripple-Setup.exe"
                     class="btn-download" id="download-btn">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -1430,20 +1430,21 @@
         (function () {
             const REPO_OWNER = 'HINCHEU';
             const REPO_NAME = 'Ripple-page';
-            const DEFAULT_DOWNLOAD_URL = 'https://github.com/' + REPO_OWNER + '/' + REPO_NAME + '/releases/download/main/Ripple-Setup.exe';
+            const DEFAULT_DOWNLOAD_URL = 'https://github.com/' + REPO_OWNER + '/' + REPO_NAME + '/releases/latest/download/Ripple-Setup.exe';
             const CACHE_KEY = 'ripple_download_stats_v1';
             const CACHE_TTL = 10 * 60 * 1000; // 10 minutes cache
+            const BASE_DOWNLOADS = 50; // offset added to GitHub's live count
 
             function updateUI(total, url) {
-                const countStr = Number(total).toLocaleString();
+                const countStr = (BASE_DOWNLOADS + (Number(total) || 0)).toLocaleString();
                 const textEl = document.getElementById('download-count-text');
                 const subEl = document.getElementById('download-count-sub');
 
                 if (textEl) {
-                    textEl.textContent = 50 + Number(countStr) + ' Downloads';
+                    textEl.textContent = countStr + ' Downloads';
                 }
                 if (subEl) {
-                    subEl.textContent = 50 + Number(countStr) + ' downloads';
+                    subEl.textContent = countStr + ' downloads';
                 }
                 if (url) {
                     const navBtn = document.getElementById('nav-download-btn');
