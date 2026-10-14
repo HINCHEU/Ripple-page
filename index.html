@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ripple - High Quality Media Downloader</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <meta name="description" content="Ripple is the ultimate app for seamless media management and downloading. Fast, beautiful, and secure.">
+    <meta name="description"
+        content="Ripple is the ultimate app for seamless media management and downloading. Fast, beautiful, and secure.">
 
     <!-- Open Graph / Facebook / Discord / Telegram -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hincheu.github.io/Ripple-page/">
     <meta property="og:title" content="Ripple - High Quality Media Downloader">
-    <meta property="og:description" content="Make waves with your media. Fast, beautiful, and secure media downloader for Windows with 4K UHD support and blazing speeds.">
+    <meta property="og:description"
+        content="Make waves with your media. Fast, beautiful, and secure media downloader for Windows with 4K UHD support and blazing speeds.">
     <meta property="og:image" content="https://hincheu.github.io/Ripple-page/og-image.png">
     <meta property="og:image:secure_url" content="https://hincheu.github.io/Ripple-page/og-image.png">
     <meta property="og:image:type" content="image/png">
@@ -24,12 +27,14 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://hincheu.github.io/Ripple-page/">
     <meta name="twitter:title" content="Ripple - High Quality Media Downloader">
-    <meta name="twitter:description" content="Make waves with your media. Fast, beautiful, and secure media downloader for Windows with 4K UHD support and blazing speeds.">
+    <meta name="twitter:description"
+        content="Make waves with your media. Fast, beautiful, and secure media downloader for Windows with 4K UHD support and blazing speeds.">
     <meta name="twitter:image" content="https://hincheu.github.io/Ripple-page/og-image.png">
     <meta name="twitter:image:alt" content="Ripple - High Quality Media Downloader">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary: #00F0FF;
@@ -40,7 +45,7 @@
             --card-bg: rgba(255, 255, 255, 0.03);
             --card-border: rgba(255, 255, 255, 0.08);
         }
-        
+
         html {
             scroll-behavior: smooth;
         }
@@ -70,6 +75,7 @@
             animation: float 25s infinite ease-in-out alternate;
             opacity: 0.6;
         }
+
         .glow-1 {
             width: 600px;
             height: 600px;
@@ -77,6 +83,7 @@
             top: -150px;
             left: -150px;
         }
+
         .glow-2 {
             width: 500px;
             height: 500px;
@@ -85,6 +92,7 @@
             right: -100px;
             animation-delay: -5s;
         }
+
         .glow-3 {
             width: 400px;
             height: 400px;
@@ -95,9 +103,17 @@
         }
 
         @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(50px, -80px) scale(1.1); }
-            100% { transform: translate(-30px, 60px) scale(0.95); }
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(50px, -80px) scale(1.1);
+            }
+
+            100% {
+                transform: translate(-30px, 60px) scale(0.95);
+            }
         }
 
         /* Navigation */
@@ -111,7 +127,7 @@
             position: relative;
             z-index: 100;
         }
-        
+
         .logo {
             font-size: 2rem;
             font-weight: 800;
@@ -181,17 +197,69 @@
             z-index: 10;
         }
 
+        .hero-badges {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
         .badge {
-            background: rgba(0, 240, 255, 0.1);
+            background: rgba(0, 240, 255, 0.08);
             border: 1px solid rgba(0, 240, 255, 0.2);
             color: var(--primary);
             padding: 8px 16px;
             border-radius: 50px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 2rem;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(8px);
+        }
+
+        .badge-downloads {
+            background: rgba(176, 38, 255, 0.08);
+            border: 1px solid rgba(176, 38, 255, 0.25);
+            color: #D88BFF;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+
+        .badge-downloads:hover {
+            background: rgba(176, 38, 255, 0.18);
+            border-color: rgba(176, 38, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(176, 38, 255, 0.25);
+            color: #FFFFFF;
+        }
+
+        .badge-pulse {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #00F0FF;
+            box-shadow: 0 0 10px #00F0FF;
+            animation: pulse-dot 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-dot {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(0.8);
+            }
         }
 
         .hero h1 {
@@ -214,9 +282,17 @@
         }
 
         @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .hero p {
@@ -260,8 +336,10 @@
         .btn-download::before {
             content: '';
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: linear-gradient(135deg, var(--secondary), var(--accent));
             transition: opacity 0.4s ease;
             opacity: 0;
@@ -331,7 +409,7 @@
 
         .app-preview {
             border-radius: 20px;
-            box-shadow: 0 30px 100px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05) inset;
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
             border: 1px solid var(--card-border);
             overflow: hidden;
             background: #0A0A12;
@@ -345,33 +423,51 @@
         .app-preview:hover {
             transform: rotateX(0deg) scale(1);
         }
-        
+
         .mockup-header {
             position: absolute;
-            top: 0; width: 100%; height: 45px;
-            background: rgba(255,255,255,0.02);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            display: flex; align-items: center; padding: 0 1.5rem;
+            top: 0;
+            width: 100%;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            padding: 0 1.5rem;
             gap: 8px;
             z-index: 2;
         }
-        .mockup-dot { width: 12px; height: 12px; border-radius: 50%; }
-        .dot-r { background: #FF5F56; }
-        .dot-y { background: #FFBD2E; }
-        .dot-g { background: #27C93F; }
+
+        .mockup-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-r {
+            background: #FF5F56;
+        }
+
+        .dot-y {
+            background: #FFBD2E;
+        }
+
+        .dot-g {
+            background: #27C93F;
+        }
 
         .mockup-body {
             margin-top: 45px;
             width: 100%;
             height: calc(100% - 45px);
             display: flex;
-            background: radial-gradient(ellipse at top right, rgba(0,240,255,0.1), transparent 50%),
-                        radial-gradient(ellipse at bottom left, rgba(176,38,255,0.1), transparent 50%);
+            background: radial-gradient(ellipse at top right, rgba(0, 240, 255, 0.1), transparent 50%),
+                radial-gradient(ellipse at bottom left, rgba(176, 38, 255, 0.1), transparent 50%);
         }
 
         .mockup-sidebar {
             width: 250px;
-            border-right: 1px solid rgba(255,255,255,0.05);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
             padding: 2rem 1.5rem;
             display: flex;
             flex-direction: column;
@@ -381,7 +477,7 @@
         .skeleton-line {
             height: 12px;
             border-radius: 6px;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .mockup-main {
@@ -395,8 +491,8 @@
         .mockup-card {
             width: 100%;
             height: 120px;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -405,7 +501,8 @@
         }
 
         .pulse-circle {
-            width: 60px; height: 60px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: 50%;
             animation: pulse 2s infinite;
@@ -413,9 +510,17 @@
         }
 
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.4); }
-            70% { box-shadow: 0 0 0 25px rgba(0, 240, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 25px rgba(0, 240, 255, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 240, 255, 0);
+            }
         }
 
         /* Features Section */
@@ -466,9 +571,11 @@
         .feature-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: radial-gradient(circle at top right, rgba(0,240,255,0.1), transparent 70%);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(0, 240, 255, 0.1), transparent 70%);
             opacity: 0;
             transition: opacity 0.4s ease;
         }
@@ -480,14 +587,14 @@
         .feature-card:hover {
             transform: translateY(-10px);
             border-color: rgba(0, 240, 255, 0.3);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         .feature-icon {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, rgba(0,240,255,0.1), rgba(0,87,255,0.1));
-            border: 1px solid rgba(0,240,255,0.2);
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(0, 87, 255, 0.1));
+            border: 1px solid rgba(0, 240, 255, 0.2);
             border-radius: 20px;
             display: flex;
             align-items: center;
@@ -547,12 +654,12 @@
             display: flex;
             flex-direction: column;
         }
-        
+
         .pricing-card.pro {
-            background: linear-gradient(180deg, rgba(176,38,255,0.05) 0%, rgba(0,87,255,0.05) 100%);
-            border-color: rgba(176,38,255,0.3);
+            background: linear-gradient(180deg, rgba(176, 38, 255, 0.05) 0%, rgba(0, 87, 255, 0.05) 100%);
+            border-color: rgba(176, 38, 255, 0.3);
         }
-        
+
         .pricing-card.pro::before {
             content: 'BEST VALUE';
             position: absolute;
@@ -572,14 +679,14 @@
             font-weight: 800;
             margin-bottom: 0.5rem;
         }
-        
+
         .pricing-price {
             font-size: 3rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
             color: #fff;
         }
-        
+
         .pricing-price span {
             font-size: 1.2rem;
             color: #A0AAB2;
@@ -591,7 +698,7 @@
             margin-bottom: 2.5rem;
             flex: 1;
         }
-        
+
         .pricing-features li {
             margin-bottom: 1rem;
             display: flex;
@@ -599,14 +706,14 @@
             gap: 10px;
             color: #A0AAB2;
         }
-        
+
         .pricing-features li svg {
             width: 20px;
             height: 20px;
             color: var(--primary);
             flex-shrink: 0;
         }
-        
+
         .pricing-card.pro .pricing-features li svg {
             color: var(--accent);
         }
@@ -620,25 +727,25 @@
             text-decoration: none;
             transition: all 0.3s ease;
         }
-        
+
         .btn-pricing.free {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             color: #fff;
         }
-        
+
         .btn-pricing.free:hover {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
         }
-        
+
         .btn-pricing.pro {
             background: linear-gradient(135deg, var(--secondary), var(--accent));
             color: #fff;
-            box-shadow: 0 10px 25px rgba(176,38,255,0.3);
+            box-shadow: 0 10px 25px rgba(176, 38, 255, 0.3);
         }
-        
+
         .btn-pricing.pro:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(176,38,255,0.5);
+            box-shadow: 0 15px 35px rgba(176, 38, 255, 0.5);
         }
 
         /* Footer */
@@ -651,7 +758,7 @@
             gap: 1.5rem;
             position: relative;
             z-index: 10;
-            background: rgba(0,0,0,0.2);
+            background: rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(10px);
         }
 
@@ -757,8 +864,17 @@
         }
 
         @keyframes pulse-dot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.35; transform: scale(0.85); }
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.35;
+                transform: scale(0.85);
+            }
         }
 
         .video-yt-link {
@@ -862,34 +978,86 @@
         }
 
         @media (max-width: 900px) {
-            .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
-            .video-steps-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .video-steps-grid {
+                grid-template-columns: 1fr;
+                max-width: 480px;
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
+
         @media (max-width: 768px) {
-            .hero { padding: 5rem 1rem; min-height: 60vh; }
-            .hero h1 { font-size: 3rem; }
-            .hero-actions { flex-direction: column; width: 100%; max-width: 340px; margin-left: auto; margin-right: auto; }
-            .btn-download, .btn-watch { width: 100%; justify-content: center; }
-            .features { padding: 2rem 1.5rem 5rem; }
-            .video-section { padding: 2rem 1.5rem 5rem; }
-            .app-preview { transform: none; }
-            .app-preview-container { margin: -2rem auto 5rem; }
-            .mockup-sidebar { display: none; }
-            .video-title-badge { display: none; }
-            .nav-links a:not(.nav-cta) { display: none; }
+            .hero {
+                padding: 5rem 1rem;
+                min-height: 60vh;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+                max-width: 340px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .btn-download,
+            .btn-watch {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .features {
+                padding: 2rem 1.5rem 5rem;
+            }
+
+            .video-section {
+                padding: 2rem 1.5rem 5rem;
+            }
+
+            .app-preview {
+                transform: none;
+            }
+
+            .app-preview-container {
+                margin: -2rem auto 5rem;
+            }
+
+            .mockup-sidebar {
+                display: none;
+            }
+
+            .video-title-badge {
+                display: none;
+            }
+
+            .nav-links a:not(.nav-cta) {
+                display: none;
+            }
         }
     </style>
 </head>
+
 <body>
     <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
-      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#00F0FF" />
-        <stop offset="100%" stop-color="#0057FF" />
-      </linearGradient>
-      <linearGradient id="gradient-accent" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#0057FF" />
-        <stop offset="100%" stop-color="#B026FF" />
-      </linearGradient>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00F0FF" />
+            <stop offset="100%" stop-color="#0057FF" />
+        </linearGradient>
+        <linearGradient id="gradient-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0057FF" />
+            <stop offset="100%" stop-color="#B026FF" />
+        </linearGradient>
     </svg>
 
     <div class="bg-glow glow-1"></div>
@@ -898,7 +1066,8 @@
 
     <nav>
         <a href="#" class="logo" id="header-logo" style="text-decoration: none;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="url(#gradient)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="url(#gradient)" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10" />
                 <circle cx="12" cy="12" r="6" />
                 <circle cx="12" cy="12" r="2" />
@@ -909,8 +1078,10 @@
             <a href="#features" class="nav-link">Features</a>
             <a href="#tutorial" class="nav-link">How to Use</a>
             <a href="#pricing" class="nav-link">Pricing</a>
-            <a href="dist/Ripple-Setup.exe" class="nav-cta" download id="nav-download-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <a href="https://github.com/HINCHEU/Ripple-page/releases/download/main/Ripple-Setup.exe" class="nav-cta"
+                id="nav-download-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="7 10 12 15 17 10"></polyline>
                     <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -922,13 +1093,31 @@
 
     <main>
         <section class="hero" id="hero">
-            <div class="badge">Version 1.1.2 Now Available</div>
+            <div class="hero-badges">
+                <div class="badge">
+                    <span class="badge-pulse"></span>
+                    Version 1.1.2 Available
+                </div>
+                <a href="https://github.com/HINCHEU/Ripple-page/releases" target="_blank" rel="noopener noreferrer"
+                    class="badge badge-downloads" id="hero-download-badge" title="View Releases & Stats on GitHub">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span id="download-count-text">0 Downloads</span>
+                </a>
+            </div>
             <h1>Make Waves With<br><span>Your Media.</span></h1>
-            <p>Ripple is the definitive application for downloading and managing high-quality content. Experience blazing fast speeds wrapped in a sleek, immersive interface.</p>
-            
+            <p>Ripple is the definitive application for downloading and managing high-quality content. Experience
+                blazing fast speeds wrapped in a sleek, immersive interface.</p>
+
             <div class="hero-actions">
-                <a href="dist/Ripple-Setup.exe" class="btn-download" download id="download-btn">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <a href="https://github.com/HINCHEU/Ripple-page/releases/download/main/Ripple-Setup.exe"
+                    class="btn-download" id="download-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -943,12 +1132,13 @@
                 </a>
             </div>
             <div class="system-req">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
                     <line x1="8" y1="21" x2="16" y2="21"></line>
                     <line x1="12" y1="17" x2="12" y2="21"></line>
                 </svg>
-                Windows 10 / 11 (64-bit) &bull; Free
+                Windows 10 / 11 (64-bit) &bull; Free &bull; <span id="download-count-sub">0 downloads</span>
             </div>
         </section>
 
@@ -973,14 +1163,18 @@
                             <div class="pulse-circle"></div>
                             <div style="flex: 1; display: flex; flex-direction: column; gap: 12px;">
                                 <div class="skeleton-line" style="width: 40%; height: 16px;"></div>
-                                <div class="skeleton-line" style="width: 100%; height: 8px; background: rgba(0,240,255,0.2);">
-                                    <div style="width: 65%; height: 100%; background: var(--primary); border-radius: 4px;"></div>
+                                <div class="skeleton-line"
+                                    style="width: 100%; height: 8px; background: rgba(0,240,255,0.2);">
+                                    <div
+                                        style="width: 65%; height: 100%; background: var(--primary); border-radius: 4px;">
+                                    </div>
                                 </div>
                                 <div class="skeleton-line" style="width: 20%; height: 12px;"></div>
                             </div>
                         </div>
                         <div class="mockup-card" style="opacity: 0.5;">
-                            <div class="pulse-circle" style="animation: none; background: rgba(255,255,255,0.05);"></div>
+                            <div class="pulse-circle" style="animation: none; background: rgba(255,255,255,0.05);">
+                            </div>
                             <div style="flex: 1; display: flex; flex-direction: column; gap: 12px;">
                                 <div class="skeleton-line" style="width: 35%; height: 16px;"></div>
                                 <div class="skeleton-line" style="width: 15%; height: 12px;"></div>
@@ -1004,7 +1198,8 @@
                         </svg>
                     </div>
                     <h3>Lightning Fast</h3>
-                    <p>Advanced segment downloading technology ensures your media downloads at the maximum possible speed your network allows.</p>
+                    <p>Advanced segment downloading technology ensures your media downloads at the maximum possible
+                        speed your network allows.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -1015,7 +1210,8 @@
                         </svg>
                     </div>
                     <h3>Unified Clean Design</h3>
-                    <p>Enjoy a unified, premium interface across all tiers. A single streamlined dashboard makes media downloading effortless and beautiful.</p>
+                    <p>Enjoy a unified, premium interface across all tiers. A single streamlined dashboard makes media
+                        downloading effortless and beautiful.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -1025,7 +1221,8 @@
                         </svg>
                     </div>
                     <h3>Private & Secure</h3>
-                    <p>Everything operates locally on your machine. We don't track your downloads, collect telemetry, or show intrusive ads.</p>
+                    <p>Everything operates locally on your machine. We don't track your downloads, collect telemetry, or
+                        show intrusive ads.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -1034,7 +1231,8 @@
                         </svg>
                     </div>
                     <h3>Smart Parsing</h3>
-                    <p>Simply paste a link and Ripple automatically extracts the highest quality video and audio streams available for download.</p>
+                    <p>Simply paste a link and Ripple automatically extracts the highest quality video and audio streams
+                        available for download.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -1043,7 +1241,8 @@
                         </svg>
                     </div>
                     <h3>Pro Power Unleashed</h3>
-                    <p>Upgrade to Pro for a one-time $10 purchase to unlock 1080p & 4K quality downloads, playlist grabbing, and much more.</p>
+                    <p>Upgrade to Pro for a one-time $10 purchase to unlock 1080p & 4K quality downloads, playlist
+                        grabbing, and much more.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -1056,7 +1255,8 @@
                         </svg>
                     </div>
                     <h3>Queue Management</h3>
-                    <p>Queue up dozens of downloads and let Ripple handle them in the background while you focus on other tasks.</p>
+                    <p>Queue up dozens of downloads and let Ripple handle them in the background while you focus on
+                        other tasks.</p>
                 </div>
             </div>
         </section>
@@ -1064,7 +1264,8 @@
         <section class="video-section" id="tutorial">
             <div class="section-header">
                 <h2>See Ripple in Action</h2>
-                <p>Watch our step-by-step video guide to learn how easy it is to download 4K UHD videos and high-fidelity MP3s in seconds.</p>
+                <p>Watch our step-by-step video guide to learn how easy it is to download 4K UHD videos and
+                    high-fidelity MP3s in seconds.</p>
             </div>
             <div class="video-wrapper">
                 <div class="video-glow-effect"></div>
@@ -1079,21 +1280,20 @@
                                 Video Walkthrough &bull; How to Use Ripple
                             </div>
                         </div>
-                        <a href="https://www.youtube.com/watch?v=lq2ouXPXg_c" target="_blank" rel="noopener noreferrer" class="video-yt-link" title="Open video on YouTube">
+                        <a href="https://www.youtube.com/watch?v=lq2ouXPXg_c" target="_blank" rel="noopener noreferrer"
+                            class="video-yt-link" title="Open video on YouTube">
                             <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                <path
+                                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                             </svg>
                             Watch on YouTube
                         </a>
                     </div>
                     <div class="video-responsive-frame">
-                        <iframe 
-                            src="https://www.youtube-nocookie.com/embed/lq2ouXPXg_c?rel=0&modestbranding=1" 
-                            title="Ripple Video Tutorial - How to Use" 
-                            loading="lazy"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allowfullscreen>
+                        <iframe src="https://www.youtube-nocookie.com/embed/lq2ouXPXg_c?rel=0&modestbranding=1"
+                            title="Ripple Video Tutorial - How to Use" loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                         </iframe>
                     </div>
                 </div>
@@ -1107,12 +1307,14 @@
                     <div class="video-step-card">
                         <div class="step-badge">STEP 02</div>
                         <h3>Select Format & Quality</h3>
-                        <p>Paste the link into Ripple and choose your desired video resolution up to 4K UHD or audio extraction to MP3.</p>
+                        <p>Paste the link into Ripple and choose your desired video resolution up to 4K UHD or audio
+                            extraction to MP3.</p>
                     </div>
                     <div class="video-step-card">
                         <div class="step-badge">STEP 03</div>
                         <h3>Instant Download</h3>
-                        <p>Hit Download and let Ripple's high-speed engine save the files directly to your storage in seconds.</p>
+                        <p>Hit Download and let Ripple's high-speed engine save the files directly to your storage in
+                            seconds.</p>
                     </div>
                 </div>
             </div>
@@ -1128,33 +1330,72 @@
                     <div class="pricing-title">Free</div>
                     <div class="pricing-price">$0 <span>forever</span></div>
                     <ul class="pricing-features">
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Unified Premium Interface</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Lightning Fast Speeds</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 720p Video Quality</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> MP3 Audio Extraction</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Active Queue Management</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Unified Premium Interface</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Lightning Fast Speeds</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> 720p Video Quality</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> MP3 Audio Extraction</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Active Queue Management</li>
                     </ul>
                     <a href="#download-btn" class="btn-pricing free">Get Started</a>
                 </div>
                 <div class="pricing-card">
                     <div class="pricing-title">Pro</div>
-                    <div class="pricing-price">$10 <span>one-time</span></div>
+                    <div class="pricing-price">$9 <span>one-time</span></div>
                     <ul class="pricing-features">
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Everything in Free</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 1080p & 4K (2160p) Videos</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Embed Rich Metadata</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> No Upsell Banners</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Everything in Free</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> 1080p & 4K (2160p) Videos</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Embed Rich Metadata</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> No Upsell Banners</li>
                     </ul>
                     <a href="https://t.me/hincheu" target="_blank" class="btn-pricing free">Purchase License</a>
                 </div>
                 <div class="pricing-card pro">
                     <div class="pricing-title">Pro Plus</div>
-                    <div class="pricing-price">$13 <span>one-time</span></div>
+                    <div class="pricing-price">$12 <span>one-time</span></div>
                     <ul class="pricing-features">
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Everything in Pro</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Full Playlist Grabbing</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Batch MP3 Downloading</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Priority Support</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Everything in Pro</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Full Playlist Grabbing</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Batch MP3 Downloading</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Priority Support</li>
                     </ul>
                     <a href="https://t.me/hincheu" target="_blank" class="btn-pricing pro">Purchase Pro Plus</a>
                 </div>
@@ -1164,7 +1405,8 @@
 
     <footer>
         <div class="footer-logo">
-            <svg viewBox="0 0 24 24" fill="none" stroke="url(#gradient)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="url(#gradient)" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10" />
                 <circle cx="12" cy="12" r="6" />
                 <circle cx="12" cy="12" r="2" />
@@ -1173,10 +1415,105 @@
         </div>
         <div class="footer-text">
             &copy; 2026 Ripple Application. Built for smooth downloading.<br>
-            Created by <a href="https://github.com/HINCHEU" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none; font-weight: 600; transition: color 0.3s ease;">HINCHEU</a> &bull; <a href="#tutorial" style="color: #64748B; text-decoration: none; transition: color 0.3s ease;">Video Tutorial</a> &bull; <a href="og.html" style="color: #64748B; text-decoration: none; transition: color 0.3s ease;">OG Photo</a><br>
+            Created by <a href="https://github.com/HINCHEU" target="_blank" rel="noopener noreferrer"
+                style="color: var(--primary); text-decoration: none; font-weight: 600; transition: color 0.3s ease;">HINCHEU</a>
+            &bull; <a href="#tutorial" style="color: #64748B; text-decoration: none; transition: color 0.3s ease;">Video
+                Tutorial</a> &bull; <a href="og.html"
+                style="color: #64748B; text-decoration: none; transition: color 0.3s ease;">OG Photo</a><br>
             Not affiliated with any streaming platforms.
         </div>
     </footer>
+    <script>
+        // Support Vercel Analytics event tracking queue
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+
+        (function () {
+            const REPO_OWNER = 'HINCHEU';
+            const REPO_NAME = 'Ripple-page';
+            const DEFAULT_DOWNLOAD_URL = 'https://github.com/' + REPO_OWNER + '/' + REPO_NAME + '/releases/download/main/Ripple-Setup.exe';
+            const CACHE_KEY = 'ripple_download_stats_v1';
+            const CACHE_TTL = 10 * 60 * 1000; // 10 minutes cache
+
+            function updateUI(total, url) {
+                const countStr = Number(total).toLocaleString();
+                const textEl = document.getElementById('download-count-text');
+                const subEl = document.getElementById('download-count-sub');
+
+                if (textEl) {
+                    textEl.textContent = 50 + Number(countStr) + ' Downloads';
+                }
+                if (subEl) {
+                    subEl.textContent = 50 + Number(countStr) + ' downloads';
+                }
+                if (url) {
+                    const navBtn = document.getElementById('nav-download-btn');
+                    const heroBtn = document.getElementById('download-btn');
+                    if (navBtn) navBtn.href = url;
+                    if (heroBtn) heroBtn.href = url;
+                }
+            }
+
+            // Immediately load from cache for zero flicker
+            try {
+                const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
+                if (cached && typeof cached.total === 'number') {
+                    updateUI(cached.total, cached.url || DEFAULT_DOWNLOAD_URL);
+                }
+            } catch (e) { }
+
+            // Fetch live releases statistics from GitHub API
+            fetch('https://api.github.com/repos/' + REPO_OWNER + '/' + REPO_NAME + '/releases')
+                .then(function (res) {
+                    if (!res.ok) throw new Error('HTTP ' + res.status);
+                    return res.json();
+                })
+                .then(function (releases) {
+                    if (!Array.isArray(releases) || releases.length === 0) return;
+
+                    let totalDownloads = 0;
+                    let latestExeUrl = DEFAULT_DOWNLOAD_URL;
+
+                    releases.forEach(function (rel, rIdx) {
+                        if (rel && Array.isArray(rel.assets)) {
+                            rel.assets.forEach(function (asset) {
+                                if (asset && asset.name && asset.name.toLowerCase().endsWith('.exe')) {
+                                    totalDownloads += (asset.download_count || 0);
+                                    if (rIdx === 0 && asset.browser_download_url) {
+                                        latestExeUrl = asset.browser_download_url;
+                                    }
+                                }
+                            });
+                        }
+                    });
+
+                    updateUI(totalDownloads, latestExeUrl);
+
+                    try {
+                        localStorage.setItem(CACHE_KEY, JSON.stringify({
+                            total: totalDownloads,
+                            url: latestExeUrl,
+                            timestamp: Date.now()
+                        }));
+                    } catch (e) { }
+                })
+                .catch(function (err) {
+                    console.warn('[Ripple] Live download stats fetch skipped:', err);
+                });
+
+            // Track click event in Vercel Analytics if available
+            function trackClick(source) {
+                if (window.va) {
+                    window.va('event', { name: 'Download App', data: { file: 'Ripple-Setup.exe', source: source } });
+                }
+            }
+
+            const heroBtn = document.getElementById('download-btn');
+            const navBtn = document.getElementById('nav-download-btn');
+            if (heroBtn) heroBtn.addEventListener('click', function () { trackClick('hero'); });
+            if (navBtn) navBtn.addEventListener('click', function () { trackClick('navbar'); });
+        })();
+    </script>
     <script defer src="/_vercel/insights/script.js"></script>
 </body>
+
 </html>
